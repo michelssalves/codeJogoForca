@@ -1,32 +1,39 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <h1>Jogo da Forca</h1>
+    <section v-if="tela === 'inicio'" id="inicio">
+      <Formulario/>
+    </section>
+    <section v-if="tela === 'jogo'" id="jogo">
+      Jogo
+    </section>
   </div>
 </template>
+<script>
+import '@/assets/css/global.css';
+import Formulario from '@/components/Formulario';
+  export default{
+    name: 'App',
+    components:{
+      Formulario
+    },
+    data(){
+      return{
+        tela: 'inicio',
 
+      }
+    }
+
+
+  }
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+#app{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 </style>
