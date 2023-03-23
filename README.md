@@ -1,4 +1,4 @@
-# joguinho
+# codeJogoForca
 
 ## Project setup
 ```
