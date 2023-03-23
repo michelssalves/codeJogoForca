@@ -1,8 +1,12 @@
 <template>
   <div class="formulario">
-    <div class="formulario-title">Defina a palavra</div>
-    <input type="text" class="formulario-input">
-    <button>Próximo</button>
+    <div class="formulario-title">{{title}}</div>
+    <input type="text" class="formulario-input" v-model="inputValue">
+    <button 
+    :disable="inputValue.length === 0"
+    @click="onsubmit"
+    
+    >{{button}}</button>
   </div>
 
 </template>
@@ -10,7 +14,26 @@
 <script>
 export default {
     // eslint-disable-next-line 
-    name: 'Formulario'
+    name: 'Formulario',
+    props:{
+        title: String,
+        button: String,
+        action: Function,
+    },
+    data(){
+        return{
+            inputValue:'',
+
+        }
+
+    },
+    methods: {
+        onsubmit: function(){
+            this.action(this.inputValue)
+            this.inputValue = ''
+        }
+    }
+
 
 }
 </script>
@@ -30,5 +53,8 @@ export default {
         border:0;
         border-radius: 5px;
         margin:10px 0px;
+        text-align: center;
+        color: var(--color-text-dark);
+        font-size:16px;
     }
 </style>
